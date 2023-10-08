@@ -52,10 +52,14 @@ async def create(request:Request): # id and quantity
         status = "pending"
     )
     order.save()
+    order_completed(order)
     return order
 
 
+def order_completed(order:Order):
+    order.status="completed"
 
+    order.save()
 
 
 
